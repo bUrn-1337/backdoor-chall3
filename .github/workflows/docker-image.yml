@@ -35,7 +35,6 @@ jobs:
             -t $env:REGISTRY/$env:IMAGE:$env:TAG `
             -f Dockerfile `
             .
-
       - name: Push to ACR
         run: |
           docker push $env:REGISTRY/$env:IMAGE:$env:TAG
