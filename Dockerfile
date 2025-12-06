@@ -4,4 +4,4 @@ WORKDIR /inetpub/wwwroot
 
 COPY . .
 
-RUN powershell -Command "Move-Item -Path 'C:\inetpub\wwwroot\flag.txt' -Destination 'C:\flag.txt' -Force; icacls 'C:\flag.txt' /inheritance:r; icacls 'C:\flag.txt' /grant:r 'Administrators:(R)'; icacls 'C:\flag.txt' /grant:r 'SYSTEM:(R)'; attrib +r 'C:\flag.txt'; icacls 'C:\flag.txt' /deny 'IIS_IUSRS:(R)'"
+RUN powershell -Command "Move-Item -Path 'C:\inetpub\wwwroot\flag.txt' -Destination 'C:\flag.txt' -Force; icacls 'C:\flag.txt' /inheritance:r; icacls 'C:\flag.txt' /grant:r 'Administrators:(R)'; icacls 'C:\flag.txt' /grant:r 'SYSTEM:(R)'; attrib +r 'C:\flag.txt'; icacls 'C:\flag.txt' /deny 'IIS_IUSRS:(R)'; icacls 'C:\Windows\System32' /grant 'BUILTIN\IIS_IUSRS:(OI)(CI)(RX)' /T"
