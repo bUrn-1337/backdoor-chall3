@@ -9,14 +9,10 @@
     
     <form id="form1" runat="server">
         <h2>Healthcheck (admin)</h2>
-
-       
         <asp:HiddenField ID="csrf_token" runat="server" />
-
         URL: <input id="url" />
         <button type="button" id="run">Run</button>
         <pre id="out"></pre>
-        <div id="dbg_token">(no token yet)</div>
 
         <script type="text/javascript">
             function getCsrf() {
@@ -30,7 +26,7 @@
             document.getElementById('run').onclick = async function () {
                 var url = document.getElementById('url').value;
                 var token = getCsrf();
-                document.getElementById('dbg_token').textContent = 'CSRF token used: ' + (token || '(missing)');
+                
                 var r = await fetch('/health.ashx', {
                     method: 'POST',
                     headers: {
